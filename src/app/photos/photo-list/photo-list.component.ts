@@ -5,26 +5,26 @@ import { Photo } from '../photo/photo';
 import { PhotoService } from '../photo/photo.service';
 
 @Component({
-  selector: 'app-photo-list',
+  selector: 'app-gphoto-list',
   templateUrl: './photo-list.component.html',
   styleUrls: ['./photo-list.component.css']
 })
 export class PhotoListComponent implements OnInit {
-
+  
+  filter = '';
   photos: Photo[] = [];
-  filter: string = '';
-  hasMore: boolean = true;
+  hasMore = true;
   currentPage: number = 1;
   userName: string = '';
-
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private photoService: PhotoService
-  ) { }
-
+    ) {}
+  
   ngOnInit(): void {
     this.userName = this.activatedRoute.snapshot.params.userName;
-    this.photos = this.activatedRoute.snapshot.data['photos'];
+    this.photos = this.activatedRoute.snapshot.data.photos;
   }
 
   load() {
@@ -33,7 +33,8 @@ export class PhotoListComponent implements OnInit {
       .subscribe(photos => {
         this.filter = '';
         this.photos = this.photos.concat(photos);
-        if(!photos.length) this.hasMore = false;
+        if (!photos.length) {this.hasMore = false}
       });
   }
+
 }
