@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatButtonModule } from "@angular/material/button";
 
 import { AppComponent } from './app.component';
 import { PhotosModule } from './photos/photos.module';
@@ -16,7 +18,9 @@ import { HomeModule } from './home/home.module';
       AppRoutingModule,
       PhotosModule,
       ErrorsModule,
-      HomeModule
+      HomeModule,
+      BrowserAnimationsModule,
+      MatButtonModule
    ],
    providers: [],
    bootstrap: [
