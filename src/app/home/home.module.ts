@@ -23,6 +23,7 @@ import { SignUpService } from './singup/signup.service';
         RouterModule,
         HomeRoutingModule
     ],
+    exports: [ SignInComponent ],
     providers: [
         SignUpService
     ]
