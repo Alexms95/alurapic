@@ -1,13 +1,12 @@
-<!-- <h1 style="background: red" appDarkenOnHover brightness="20%">Photos</h1> -->
+<ap-search 
+    (onTyping)="filter = $event" [value]="filter">
+</ap-search>
 
-<app-search 
-    (OnTyping)="filter = $event" [value]="filter">
-</app-search>
+<ap-photos 
+    [photos]="photos | filterByDescription: filter">
+</ap-photos>
 
-<app-photos [photos]="photos | filterByDescription: filter"></app-photos>
-
-<app-load-button 
-    (click)="load()"
+<ap-load-button 
+    (click)="load()" 
     [hasMore]="hasMore">
-</app-load-button>
-
+</ap-load-button>
