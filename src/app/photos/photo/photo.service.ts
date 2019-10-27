@@ -39,6 +39,13 @@ export class PhotoService {
         return this.http.get<Photo>(API + '/photos/' + photoId);
     }
 
+    /**
+     * Get the comments of a photo by a `photoId`
+     *
+     * @param {number} photoId Id of a photo
+     * @returns Observable of a array of `PhotoComment` interface
+     * @memberof PhotoService
+     */
     getComments(photoId: number) {
         return this.http.get<PhotoComment[]>(API + '/photos/' + photoId + '/comments');
     }
