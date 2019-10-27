@@ -15,14 +15,15 @@ export class PhotoDetailsComponent implements OnInit {
 
   photo$: Observable<Photo>;
   comments$: Observable<PhotoComment[]>;
+  photoId: number;
 
   constructor(
     private route: ActivatedRoute,
     private photoservice: PhotoService) { }
   
   ngOnInit() {
-    const photoId = this.route.snapshot.params.photoId;
-    this.photo$ = this.photoservice.findById(photoId);
+    this.photoId = this.route.snapshot.params.photoId;
+    this.photo$ = this.photoservice.findById(this.photoId);
   }
 
 }
