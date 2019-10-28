@@ -7,11 +7,13 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { SignupComponent } from './signup/signup.component';
+import { HomeComponent } from './home.component';
 
 @NgModule({
     declarations: [ 
         SigninComponent,
-        SignupComponent
+        SignupComponent,
+        HomeComponent
      ],
     imports: [ 
         ReactiveFormsModule,
