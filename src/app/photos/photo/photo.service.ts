@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 
 import { Photo } from "./photo";
 import { PhotoComment } from './photo.comment';
+import { map, catchError } from 'rxjs/operators';
+import { of, throwError, Observable } from 'rxjs';
 
 const API = 'http://localhost:3000';
 
@@ -59,6 +61,26 @@ export class PhotoService {
 
     removePhoto(photoId: number) {
         return this.http.delete(API + '/photos/' + photoId);
+    }
+
+    /**
+     * Take like in a photo by a photoId. If operation returns success, it converts
+     * response to `Observable<true>`. If operation returns an error, if this error is '304 not modified',
+     * it converts response to `Observable<false>`, otherwise it throws this error.
+     * @param {number} photoId
+     * @returns {Observable<boolean>}
+     * @memberof PhotoService
+     */
+    like(photoId: number): Observable<boolean> {
+        return this.http.post(
+            API + '/photos/' + photoId + '/like',
+            { },
+            { observe: 'response' }
+        )
+        .pipe(map(res => true))
+        .pipe(catchError(err => {
+            return err.status == '304' ? of(false) : throwError(err);
+        }))
     }
     
 }
