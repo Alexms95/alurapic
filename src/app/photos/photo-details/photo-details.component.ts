@@ -54,7 +54,7 @@ export class PhotoDetailsComponent implements OnInit {
 			.like(photo.id)
 			.subscribe(liked => {
 				if (liked) {
-					this.photoService.findById(photo.id)
+					this.photo$ = this.photoService.findById(photo.id)
 				}
 			})
 	}
