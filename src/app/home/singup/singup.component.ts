@@ -6,6 +6,7 @@ import { NewUser } from './new-user';
 import { SignUpService } from './signup.service';
 import { Router } from '@angular/router';
 import { PlatformDetectorService } from 'src/app/core/plataform-detector/platform-detector.service';
+import { UsernamePasswordValidator } from './username-password.validator';
 
 @Component({
     templateUrl: './signup.component.html',
@@ -54,7 +55,10 @@ export class SignUpComponent implements OnInit {
                     Validators.minLength(8),
                     Validators.maxLength(14)
                 ]
-            ]
+            ]            
+        },
+        {
+            validator: UsernamePasswordValidator
         });
 
         this.platformDetectorService.isPlatformBrowser() && 
